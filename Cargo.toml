@@ -1,5 +1,5 @@
 [workspace]
 members = [
-    "sam",
+    "router",
 ]
 resolver = "2"

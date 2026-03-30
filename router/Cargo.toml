@@ -1,0 +1,29 @@
+[package]
+name = "i2p-router"
+version = "0.1.0"
+edition = "2021"
+description = "I2P router — tunnels, NetDB, transport, and garlic routing in Rust"
+license = "CC0-1.0"
+
+[dependencies]
+# Async traits
+async-trait = "0.1"
+
+# Crypto primitives
+aes        = "0.8"
+cbc        = { version = "0.1", features = ["alloc"] }
+chacha20poly1305 = "0.10"
+ed25519-dalek    = { version = "2", features = ["rand_core"] }
+rand_core        = { version = "0.6", features = ["getrandom"] }
+sha2       = "0.10"
+x25519-dalek     = { version = "2", features = ["reusable_secrets", "static_secrets"] }
+zeroize    = { version = "1", features = ["derive"] }
+
+# Utilities
+bytes      = "1"
+thiserror  = "2"
+tokio      = { version = "1", features = ["full"] }
+tracing    = "0.1"
+
+[dev-dependencies]
+tokio = { version = "1", features = ["full", "test-util"] }
