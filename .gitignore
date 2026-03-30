@@ -17,6 +17,9 @@ web-fragment.xml
 web-out.xml
 *.out
 
+# Rust build output
+/target/
+
 # Temporary/build dirs
 build/
 pkg-temp/

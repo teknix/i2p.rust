@@ -1,9 +1,14 @@
-//! I2P SAM (Simple Anonymous Messaging) protocol implementation.
+//! I2P SAM (Simple Anonymous Messaging) **server/router** implementation.
 //!
-//! This crate provides the building blocks for implementing the SAM v1/v2/v3
-//! protocol bridge in Rust.  It is a port of the Java implementation found in
-//! `apps/sam/` of the I2P Java router, maintained with idiomatic Rust
-//! practices (strong typing, `Result`-based error handling, `async`/`await`).
+//! This crate ports the SAM bridge *server* from the Java I2P router
+//! (`apps/sam/java/src/net/i2p/sam/`) to idiomatic, async Rust.
+//!
+//! # Scope
+//!
+//! **Server side only.**  SAM *client* code (the Java classes in
+//! `net.i2p.sam.client.*` — `SAMReader`, `SAMEventHandler`,
+//! `SAMStreamSend`, `SAMStreamSink`, …) is intentionally *not* ported here;
+//! those remain in Java.
 //!
 //! # Modules
 //!
@@ -15,6 +20,8 @@
 //! | [`naming`] | `SAMUtils.getDest`, `SAMMessageSession.lookupDest` |
 //! | [`session`] | `SAMMessageSess`, `SAMMessageSession`, `SAMStreamSession` |
 //! | [`handler`] | `SAMv1Handler.execNamingMessage` |
+//! | [`connection`] | `SAMHandler` + `SAMHandlerFactory` |
+//! | [`bridge`] | `SAMBridge` |
 //!
 //! # Key feature: in-session b32 lookups (since 0.9.69)
 //!
@@ -27,6 +34,8 @@
 //! See [`naming::resolve`] and [`handler::SamV1Handler::exec_naming_message`]
 //! for the implementation.
 
+pub mod bridge;
+pub mod connection;
 pub mod error;
 pub mod handler;
 pub mod naming;
@@ -35,6 +44,8 @@ pub mod session;
 pub mod types;
 
 // Convenience re-exports of the most commonly used items.
+pub use bridge::{BridgeConfig, SamBridge};
+pub use connection::SamConnection;
 pub use error::{Result, SamError};
 pub use handler::SamV1Handler;
 pub use naming::{get_dest, lookup_dest, resolve};
