@@ -1,0 +1,15 @@
+[package]
+name = "sam"
+version = "0.1.0"
+edition = "2021"
+description = "I2P SAM (Simple Anonymous Messaging) protocol implementation in Rust"
+license = "CC0-1.0"
+
+[dependencies]
+async-trait = "0.1"
+base64 = "0.22"
+thiserror = "2"
+tokio = { version = "1", features = ["full"] }
+
+[dev-dependencies]
+tokio = { version = "1", features = ["full", "test-util"] }
