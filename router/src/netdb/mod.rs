@@ -12,8 +12,10 @@
 //! - A simple in-memory [`MemoryNetDb`] implementation
 
 pub mod kademlia;
+pub mod lookup;
 
 pub use kademlia::{KBucket, KBUCKET_SIZE};
+pub use lookup::IterativeLookup;
 
 use std::collections::HashMap;
 use std::sync::{Arc, RwLock};

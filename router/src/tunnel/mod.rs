@@ -14,6 +14,8 @@
 //!   [`TunnelEndpoint`]
 
 pub mod pipeline;
+pub mod builder;
+pub mod manager;
 
 pub use pipeline::{TunnelEndpoint, TunnelGateway, TunnelParticipant};
 

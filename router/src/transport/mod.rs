@@ -10,6 +10,7 @@
 //! message.  Concrete implementations (NTCP2, SSU2) are separate crates.
 
 pub mod bandwidth;
+pub mod ntcp2;
 
 use std::net::SocketAddr;
 
